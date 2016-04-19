@@ -10,8 +10,8 @@
 <body>
 <div id="global">
     <header>
-        <a href="index.php"><h1 id="titleBlog">William Shakespeare Poems</h1></a>
-        <p>"This is a select list of the best famous William Shakespeare poetry"</p>
+        <a href="index.php"><h1 id="titlePage">William Shakespeare Poems</h1></a>
+        <p>This is a select list of the best famous William Shakespeare poetry</p>
     </header>
     <div id="content">
         <?php $db = new PDO('mysql:host=localhost;dbname=shakespeare;charset=utf8', 
@@ -32,8 +32,8 @@
         <?php endforeach; ?>
     </div>
     <!-- #content -->
-    <footer id="footer">
-        Blog performed with PHP, HTML5 and CSS.
+    <footer id="footerPage">
+        Website performed with PHP, HTML5 and CSS.
     </footer>
 </div>
 <!-- #global -->
