@@ -16,7 +16,7 @@ function getPoems() {
 // connect to the database and return PDO object
 function getDb() {
     $db = new PDO('mysql:host=localhost;dbname=shakespeare;charset=utf8', 
-              'gcaggia', '');
+              'gcaggia', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     
     return $db;
 }
