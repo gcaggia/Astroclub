@@ -7,11 +7,13 @@
 <?php foreach ($poems as $poem): ?>
     <article>
         <header>
-            <h1 class="titlePoem"><?= $poem['title'] ?></h1>
+            <a href="<?php echo 'poem.php?id=' . $poem['id']; ?>">
+                <h1 class="titlePoem"><?php echo $poem['title']; ?></h1>
+            </a>
         </header>
-        <p> <?php echo $poem['content'] ?> </p>
+        <p> <?php echo $poem['content']; ?> </p>
     </article>
-    <hr />
+    <hr>
 <?php endforeach; ?>
 
 <?php $content = ob_get_clean(); ?>
