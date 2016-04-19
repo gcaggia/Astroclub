@@ -17,5 +17,5 @@ function poem($idPoem) {
 
 // Display an error 
 function error($errorMessage) {
-    require "viewError";
+    require "viewError.php";
 }
