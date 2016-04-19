@@ -26,7 +26,6 @@ function getComments($idPoem) {
     $comments = $db->prepare('SELECT COM_ID      as id,     ' . 
                              '       COM_DATE    as date,   ' . 
                              '       COM_AUTHOR  as author, ' . 
-                             '       COM_TITLE   as title,  ' . 
                              '       COM_CONTENT as content ' . 
                              'FROM T_COMMENT                ' . 
                              'WHERE COM_ID = ? ');
