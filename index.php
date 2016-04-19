@@ -1,16 +1,32 @@
 <?php 
 
-        
-//Model
-require 'model.php';
+require "controller.php";
 
-//View 
 try {
-    $poems = getPoems(); 
-    require 'viewIndex.php';
+    
+    if(!isset($_GET['action'])) {
+       index();
+       return;
+    }    
+        
+    if ($_GET['action'] !== 'billet') {
+      throw new Exception("Invalid action.");
+    }
+    
+    if (!isset($_GET['id'])) {
+      throw new Exception("No Poem ID.");
+    }
+    
+    $idPoem = intval($_GET['id']);
+    
+    if ($idPoem === 0) {
+        throw new Exception("Poem ID not correct...");
+    }
+    
+    // We call the controller
+    poem($idPoem);
+ 
     
 } catch (Exception $e) {
-    $errorMessage = $e->getMessage();
-    echo '<html><body>Error ! ' . $e->getMessage() . '</body></html>'; 
+    error($e->getMessage());
 }
-
