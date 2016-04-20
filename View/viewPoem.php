@@ -18,3 +18,15 @@
     <p><?php echo $comment['author']; ?></p>
     <p><?php echo $comment['content']; ?></p>
 <?php endforeach; ?>
+
+<form method="post" action="index.php?action=comment">
+    <input id="author" name="author" type="text" 
+           placeholder="Your pseudo" required /> 
+    <br>
+    <textarea name="txtComment" id="txtComment" cols="30" rows="4"
+              placeholder="Your Comment" required ></textarea>
+    <br>
+    <input type="hidden" name="id" value="<?php echo $poem['id']; ?>" 
+           value="Comment"/>
+    <input type="submit" value="Comment"/>
+</form>
