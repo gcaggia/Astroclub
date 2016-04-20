@@ -17,7 +17,7 @@ class ControllerPoem {
     
     // Display details about a specific poem
     public function poem($idPoem) {
-        $poems    = $this->poem->getaPoem($idPoem);
+        $poem     = $this->poem->getaPoem($idPoem);
         $comments = $this->comment->getComments($idPoem);
         $view = new View("Poem");
         $view->generate(array('poem'     => $poem,

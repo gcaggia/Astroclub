@@ -2,7 +2,7 @@
 
 require_once "Controller/ControllerIndex.php";
 require_once "Controller/ControllerPoem.php";
-require_once "View/view.php";
+require_once "View/View.class.php";
 
 class Router {
     
