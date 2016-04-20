@@ -1,8 +1,5 @@
 
-
-<?php $title = "William Shakespeare Poems"; ?>
-
-<?php ob_start(); ?>
+<?php $this->title = "William Shakespeare Poems"; ?>
 
 <?php foreach ($poems as $poem): ?>
     <article>
@@ -15,7 +12,3 @@
     </article>
     <hr>
 <?php endforeach; ?>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require 'template.php'; ?>

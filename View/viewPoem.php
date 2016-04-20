@@ -1,6 +1,4 @@
-<?php $title = "William Shakespeare - " . $poem['title']; ?>
-
-<?php ob_start() ?>
+<?php $this->title = "William Shakespeare - " . $poem['title']; ?>
 
 <article>
     <header>
@@ -20,7 +18,3 @@
     <p><?php echo $comment['author']; ?></p>
     <p><?php echo $comment['content']; ?></p>
 <?php endforeach; ?>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require 'template.php'; ?>
