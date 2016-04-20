@@ -48,6 +48,15 @@ class Router {
         
     }
     
+    // Look for a param in an array
+    private function getParam($array, $name) {
+        if (isset($array[$name])) {
+            return $array[$name];  
+        } else {
+            throw new Exception("Undefined '$name' parameter");
+        }
+    }
+    
     // Display an error
     private function error($errorMessage) {
         $view = new View("Error");
