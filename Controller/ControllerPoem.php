@@ -24,4 +24,15 @@ class ControllerPoem {
                               'comments' => $comments));
     }
     
+    // Add a comment to a poem
+    public function comment($author, $content, $idPoem) {
+        
+        // Save the comment
+        $this->comment->addComment($author, $content, $idPoem);
+        
+        // Update of display
+        $this->poem($idPoem);
+        
+    }
+    
 }

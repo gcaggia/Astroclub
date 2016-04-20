@@ -40,3 +40,7 @@ header a {
 #titlePage, #footerPage {
     text-align: center;
 }
+
+#txtComment {
+    width: 50%;
+}
