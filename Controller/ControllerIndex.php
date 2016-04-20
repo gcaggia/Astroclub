@@ -15,7 +15,7 @@ class ControllerIndex {
     // Display all the poems of the website
     public function index() {
         $poems = $this->poem->getPoems();
-        $view = new View("Index");
+        $view  = new View("Index");
         $view->generate(array('poems' => $poems));
     }
     

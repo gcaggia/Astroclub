@@ -9,7 +9,7 @@ try {
        return;
     }    
         
-    if ($_GET['action'] !== 'billet') {
+    if ($_GET['action'] !== 'poem') {
       throw new Exception("Invalid action.");
     }
     
