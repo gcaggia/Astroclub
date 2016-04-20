@@ -5,7 +5,7 @@ require_once "View/View.class.php";
 
 class ControllerIndex {
     
-    // This attribut represents a model object s
+    // This attribut represents a model object 
     private $poem;
     
     public function __construct() {
@@ -15,8 +15,8 @@ class ControllerIndex {
     // Display all the poems of the website
     public function index() {
         $poems = $this->poem->getPoems();
-        $vue = new View("Index");
-        $vue->generate(array('poems' => $poems));
+        $view = new View("Index");
+        $view->generate(array('poems' => $poems));
     }
     
 }
