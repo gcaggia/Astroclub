@@ -19,7 +19,7 @@ class Article extends Model {
     }
     
     // return information of a specific article
-    public function getanAritcle($idArticle) {
+    public function getanArticle($idArticle) {
                   
         $sql = 'SELECT ARTICLE_ID      as id,     ' . 
                '       ARTICLE_TITLE   as title,  ' . 

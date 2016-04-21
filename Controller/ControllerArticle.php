@@ -1,37 +1,37 @@
 <?php
 
-require_once "Model/Poem.class.php";
+require_once "Model/Article.class.php";
 require_once "Model/Comment.class.php";
 require_once "View/View.class.php";
 
-class ControllerPoem {
+class ControllerArticle {
     
     // This attributs represents model objects
-    private $poem;
+    private $article;
     private $comment;
     
     public function __construct() {
-        $this->poem    = new Poem();
+        $this->article = new Article();
         $this->comment = new Comment();
     }
     
-    // Display details about a specific poem
-    public function poem($idPoem) {
-        $poem     = $this->poem->getaPoem($idPoem);
-        $comments = $this->comment->getComments($idPoem);
-        $view = new View("Poem");
-        $view->generate(array('poem'     => $poem,
+    // Display details about a specific article
+    public function article($idArticle) {
+        $article  = $this->article->getanArticle($idArticle);
+        $comments = $this->comment->getComments($idArticle);
+        $view = new View("Article");
+        $view->generate(array('article'  => $article,
                               'comments' => $comments));
     }
     
-    // Add a comment to a poem
-    public function comment($author, $content, $idPoem) {
+    // Add a comment to a article
+    public function comment($author, $content, $idArticle) {
         
         // Save the comment
-        $this->comment->addComment($author, $content, $idPoem);
-        echo('$author, $content, $idPoem : ' . "$author / $content /  $idPoem");
+        $this->comment->addComment($author, $content, $idArticle);
+        
         // Update of display
-        $this->poem($idPoem);
+        $this->article($idArticle);
         
     }
     
