@@ -22,26 +22,35 @@ class Router {
             if(!isset($_GET['action'])) {
                 $this->ctrlIndex->index();
                 return;
-            }    
+            } 
+            
+            $action = $_GET['action'];
                 
-            if ($_GET['action'] !== 'poem') {
-              throw new Exception("Invalid action.");
+            if ($action != 'poem' && $action != "comment") {
+              throw new Exception("Invalid action.!");
             }
             
-            if (!isset($_GET['id'])) {
-              throw new Exception("No Poem ID.");
+            //Specific poem display
+            if ($action == 'poem') {
+                
+                $idPoem = intval($this->getParam($_GET, 'id'));
+            
+                if ($idPoem === 0) {
+                    throw new Exception("Poem ID not correct...");
+                }
+            
+                // We call the controller
+                $this->ctrlPoem->poem($idPoem);
+                
+            } else {
+                
+                $author  = $this->getParam($_POST, 'author');
+                $content = $this->getParam($_POST, 'txt-comment');
+                $idPoem  = $this->getParam($_POST, 'id');
+                
+                $this->ctrlPoem->comment($author, $content, $idPoem);
             }
-            
-            $idPoem = intval($_GET['id']);
-            
-            if ($idPoem === 0) {
-                throw new Exception("Poem ID not correct...");
-            }
-            
-            // We call the controller
-            $this->ctrlPoem->poem($idPoem);
-         
-            
+
         } catch (Exception $e) {
             $this->error($e->getMessage());
         }

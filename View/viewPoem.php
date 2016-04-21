@@ -23,7 +23,7 @@
     <input id="author" name="author" type="text" 
            placeholder="Your pseudo" required /> 
     <br>
-    <textarea name="txtComment" id="txtComment" cols="30" rows="4"
+    <textarea name="txt-comment" id="txt-comment" cols="30" rows="4"
               placeholder="Your Comment" required ></textarea>
     <br>
     <input type="hidden" name="id" value="<?php echo $poem['id']; ?>" 

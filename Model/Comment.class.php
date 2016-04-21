@@ -12,7 +12,7 @@ class Comment extends Model {
                '       COM_AUTHOR  as author, ' . 
                '       COM_CONTENT as content ' . 
                'FROM T_COMMENT                ' . 
-               'WHERE COM_ID = ? ';
+               'WHERE POEM_ID = ? ';
         
         $comments = $this->executeQuery($sql, array($idPoem));
         

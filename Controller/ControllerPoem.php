@@ -29,7 +29,7 @@ class ControllerPoem {
         
         // Save the comment
         $this->comment->addComment($author, $content, $idPoem);
-        
+        echo('$author, $content, $idPoem : ' . "$author / $content /  $idPoem");
         // Update of display
         $this->poem($idPoem);
         
