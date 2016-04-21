@@ -2,37 +2,37 @@
 
 require_once "Model/Model.class.php";
 
-class Poem extends Model {
+class Article extends Model {
     
-    // return the list of poems, sorted by id desc
-    public function getPoems() {
+    // return the list of articles, sorted by id desc
+    public function getArticles() {
                   
-        $sql = 'SELECT POEM_ID      as id,     ' . 
-               '       POEM_TITLE   as title,  ' . 
-               '       POEM_CONTENT as content ' . 
-               'FROM T_POEM                    ' . 
-               'ORDER BY POEM_ID desc ';
+        $sql = 'SELECT ARTICLE_ID      as id,     ' . 
+               '       ARTICLE_TITLE   as title,  ' . 
+               '       ARTICLE_CONTENT as content ' . 
+               'FROM T_ARTICLE                    ' . 
+               'ORDER BY ARTICLE_ID desc ';
         
-        $poems = $this->executeQuery($sql);
+        $articles = $this->executeQuery($sql);
         
-        return $poems;
+        return $articles;
     }
     
-    // return information of a specific poem
-    public function getaPoem($idPoem) {
+    // return information of a specific article
+    public function getanAritcle($idArticle) {
                   
-        $sql = 'SELECT POEM_ID      as id,     ' . 
-               '       POEM_TITLE   as title,  ' . 
-               '       POEM_CONTENT as content ' . 
-               'FROM T_POEM                    ' . 
-               'WHERE POEM_ID = ? ';
+        $sql = 'SELECT ARTICLE_ID      as id,     ' . 
+               '       ARTICLE_TITLE   as title,  ' . 
+               '       ARTICLE_CONTENT as content ' . 
+               'FROM T_ARTICLE                    ' . 
+               'WHERE ARTICLE_ID = ? ';
         
-        $poem = $this->executeQuery($sql, array($idPoem));
+        $article = $this->executeQuery($sql, array($idArticle));
         
-        if($poem->rowCount() == 1) {
-            return $poem->fetch();  // return the first result 
+        if($article->rowCount() == 1) {
+            return $article->fetch();  // return the first result 
         } else {
-            throw new Exception("No poem correspond to the id '$idPoem'");
+            throw new Exception("No poem correspond to the id '$idArticle'");
         }
     }    
     
