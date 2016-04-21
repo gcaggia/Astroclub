@@ -1,17 +1,17 @@
 <?php
 
 require_once "Controller/ControllerIndex.php";
-require_once "Controller/ControllerPoem.php";
+require_once "Controller/ControllerArticle.php";
 require_once "View/View.class.php";
 
 class Router {
     
     private $ctrlIndex;
-    private $ctrlPoem;
+    private $ctrlArticle;
     
     public function __construct() {
         $this->ctrlIndex = new ControllerIndex();
-        $this->ctrlPoem  = new ControllerPoem();
+        $this->ctrlArticle  = new ControllerArticle();
     }
     
     // Handle an incoming request
@@ -26,29 +26,29 @@ class Router {
             
             $action = $_GET['action'];
                 
-            if ($action != 'poem' && $action != "comment") {
+            if ($action != 'article' && $action != "comment") {
               throw new Exception("Invalid action.!");
             }
             
-            //Specific poem display
-            if ($action == 'poem') {
+            //Specific article display
+            if ($action == 'article') {
                 
-                $idPoem = intval($this->getParam($_GET, 'id'));
+                $idArticle = intval($this->getParam($_GET, 'id'));
             
-                if ($idPoem === 0) {
-                    throw new Exception("Poem ID not correct...");
+                if ($idArticle === 0) {
+                    throw new Exception("Article ID not correct...");
                 }
             
                 // We call the controller
-                $this->ctrlPoem->poem($idPoem);
+                $this->ctrlArticle->article($idArticle);
                 
             } else {
                 
-                $author  = $this->getParam($_POST, 'author');
-                $content = $this->getParam($_POST, 'txt-comment');
-                $idPoem  = $this->getParam($_POST, 'id');
+                $author    = $this->getParam($_POST, 'author');
+                $content   = $this->getParam($_POST, 'txt-comment');
+                $idArticle = $this->getParam($_POST, 'id');
                 
-                $this->ctrlPoem->comment($author, $content, $idPoem);
+                $this->ctrlArticle->comment($author, $content, $idArticle);
             }
 
         } catch (Exception $e) {
