@@ -12,7 +12,7 @@ class Comment extends Model {
                '       COM_AUTHOR  as author, ' . 
                '       COM_CONTENT as content ' . 
                'FROM T_COMMENT                ' . 
-               'WHERE POEM_ID = ? ';
+               'WHERE ARTICLE_ID = ? ';
         
         $comments = $this->executeQuery($sql, array($idPoem));
         
@@ -22,8 +22,8 @@ class Comment extends Model {
     // Add a comment to the database
     public function addComment($author, $content, $idPoem) {
         
-        $sql = 'INSERT INTO T_COMMENT( COM_DATE, COM_AUTHOR,  ' .
-               '                       COM_CONTENT, POEM_ID ) ' .
+        $sql = 'INSERT INTO T_COMMENT( COM_DATE, COM_AUTHOR,     ' .
+               '                       COM_CONTENT, ARTICLE_ID ) ' .
                'VALUES (?, ?, ?, ?) ';
         
         $dt = date(DATE_W3C); // Get current date
