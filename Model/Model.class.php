@@ -22,7 +22,7 @@ abstract class Model {
     private function getDb() {
         
         if($this->db == null) {
-            $this->db = new PDO('mysql:host=localhost;dbname=shakespeare;charset=utf8', 
+            $this->db = new PDO('mysql:host=localhost;dbname=astroclub;charset=utf8', 
                   'gcaggia', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
 
