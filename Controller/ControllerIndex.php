@@ -1,22 +1,22 @@
 <?php
 
-require_once "Model/Poem.class.php";
+require_once "Model/Article.class.php";
 require_once "View/View.class.php";
 
 class ControllerIndex {
     
     // This attribut represents a model object 
-    private $poem;
+    private $article;
     
     public function __construct() {
-        $this->poem = new Poem();
+        $this->article = new Article();
     }
     
-    // Display all the poems of the website
+    // Display all the articles of the website
     public function index() {
-        $poems = $this->poem->getPoems();
+        $articles = $this->article->getArticles();
         $view  = new View("Index");
-        $view->generate(array('poems' => $poems));
+        $view->generate(array('articles' => $articles));
     }
     
 }
