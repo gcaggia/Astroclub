@@ -1,11 +1,14 @@
-DROP TABLE IF EXISTS T_COMMENT;
-DROP TABLE IF EXISTS T_POEM;
+-- CREATE DATABASE IF NOT EXISTS astroclub CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI;
 
-CREATE TABLE T_POEM (
-  POEM_ID       INTEGER      PRIMARY KEY AUTO_INCREMENT,
-  POEM_IMG      VARCHAR(100),
-  POEM_TITLE    VARCHAR(100) NOT NULL,
-  POEM_CONTENT  TEXT         NOT NULL
+DROP TABLE IF EXISTS T_COMMENT;
+DROP TABLE IF EXISTS T_ARTICLE;
+
+CREATE TABLE T_ARTICLE (
+  ARTICLE_ID       INTEGER      PRIMARY KEY AUTO_INCREMENT,
+  ARTICLE_DATE     DATETIME     NOT NULL,
+  ARTICLE_IMG      VARCHAR(200),
+  ARTICLE_TITLE    VARCHAR(100) NOT NULL,
+  ARTICLE_CONTENT  TEXT         NOT NULL
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE T_COMMENT (
@@ -13,46 +16,37 @@ CREATE TABLE T_COMMENT (
   COM_DATE    DATETIME     NOT NULL,
   COM_AUTHOR  VARCHAR(100) NOT NULL,
   COM_CONTENT VARCHAR(200) NOT NULL,
-  POEM_ID     INTEGER      NOT NULL,
-  constraint FK_COM_POEM foreign key(POEM_ID) references T_POEM(POEM_ID)
+  ARTICLE_ID  INTEGER      NOT NULL,
+  constraint FK_COM_ARTICLE foreign key(ARTICLE_ID) 
+             references T_ARTICLE(ARTICLE_ID)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-INSERT INTO T_POEM(POEM_TITLE, POEM_CONTENT) 
-  VALUES ("Sonnet 18", 
-          CONCAT("Shall I compare thee to a summer’s day? <br>"      ,      
-          "Thou art more lovely and more temperate:  <br>"           ,           
-          "Rough winds do shake the darling buds of May,  <br>"      ,      
-          "And summer’s lease hath all too short a date:  <br>"      ,      
-          "Sometime too hot the eye of heaven shines,  <br>"         ,         
-          "And often is his gold complexion dimm’d;  <br>"           ,           
-          "And every fair from fair sometime declines,  <br>"        ,        
-          "By chance, or nature’s changing course, untrimm’d:  <br>" , 
-          "But thy eternal summer shall not fade,  <br>"             ,             
-          "Nor lose possession of that fair thou ow’st;  <br>"       ,       
-          "Nor shall Death brag thou wander’st in his shade,  <br>"  ,  
-          "When in eternal lines to time thou grow’st:  <br>"        ,        
-          "So long as men can breathe, or eyes can see,  <br>"       ,             
-          "So long lives this, and this gives life to thee.<br>"));
+INSERT INTO T_ARTICLE(ARTICLE_TITLE, ARTICLE_DATE, 
+                      ARTICLE_IMG, ARTICLE_CONTENT) 
+  VALUES ("Curiosity",
+          NOW(),
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mars_Science_Laboratory_Curiosity_rover.jpg/640px-Mars_Science_Laboratory_Curiosity_rover.jpg",
+          CONCAT("With its rover named Curiosity, Mars Science Laboratory" ,
+                 "mission is part of NASA's Mars Exploration Program, ",
+                 "a long-term effort of robotic exploration of the red planet. ",
+                 "Curiosity was designed to assess whether Mars ever had an ",
+                 "environment able to support small life forms called microbes. ",
+                 "In other words, its mission is ",
+                 "to determine the planet's habitability. (source : NASA)"));
 
-INSERT INTO T_POEM(POEM_TITLE, POEM_CONTENT) 
-  VALUES ("Sonnet 29", 
-          CONCAT("When, in disgrace with fortune and men's eyes, <br>"      ,
-                 "I all alone beweep my outcast state, <br>"                ,
-                 "And trouble deaf heaven with my bootless cries, <br>"     ,
-                 "And look upon myself, and curse my fate, <br>"            ,
-                 "Wishing me like to one more rich in hope, <br>"           ,
-                 "Featured like him, like him with friends possessed, <br>" ,
-                 "Desiring this man's art and that man's scope, <br>"       ,
-                 "With what I most enjoy contented least; <br>"             ,
-                 "Yet in these thoughts myself almost despising, <br>"      ,
-                 "Haply I think on thee—and then my state, <br>"            ,
-                 "Like to the lark at break of day arising <br>"            ,
-                 "From sullen earth, sings hymns at heaven's gate; <br>"    ,
-                 "For thy sweet love rememb'red such wealth brings <br>"    ,
-                 "That then I scorn to change my state with kings. <br>"));
+INSERT INTO T_ARTICLE(ARTICLE_TITLE, ARTICLE_DATE, 
+                      ARTICLE_IMG, ARTICLE_CONTENT) 
+  VALUES ("Hubble",
+          NOW(),
+          "http://news.nationalgeographic.com/news/2009/09/photogalleries/new-hubble-camera-first-pictures/images/primary/090909-01-hubble-new-camera-upgraded_big.jpg",
+          CONCAT("A dusty pillar lit from within by newborn stars ",
+                 "is among the first cosmic beauties snapped by the Wide " ,
+                 "Field Camera 3 (WFC3), a new instrument installed in May ",
+                 "during the final servicing mission to refurbish ",
+                 "the Hubble Space Telescope.  (source : national geographic)"));
 
 
-INSERT INTO T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, POEM_ID) VALUES
-(NOW(), 'Eric', 'It is beautiful !!', 1);
-INSERT INTO T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, POEM_ID) VALUES
-(NOW(), 'Me', 'You are right.', 1);
+INSERT INTO T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, ARTICLE_ID) VALUES
+(NOW(), 'Eric', 'I hope the mission will succeed !!', 1);
+INSERT INTO T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, ARTICLE_ID) VALUES
+(NOW(), 'Me', 'I hope too !', 1);
