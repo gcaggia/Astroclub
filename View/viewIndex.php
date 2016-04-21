@@ -1,5 +1,5 @@
 
-<?php $this->title = "William Shakespeare Articles"; ?>
+<?php $this->title = "Astroclub"; ?>
 
 <?php foreach ($articles as $article): ?>
     <article>

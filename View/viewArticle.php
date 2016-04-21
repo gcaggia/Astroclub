@@ -1,4 +1,4 @@
-<?php $this->title = "William Shakespeare - " . $article['title']; ?>
+<?php $this->title = "Astroclub - " . $article['title']; ?>
 
 <article>
     <header>

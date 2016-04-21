@@ -10,8 +10,8 @@
 <body>
     <div id="global">
         <header>
-            <a href="index.php"><h1 id="titlePage">William Shakespeare Poems</h1></a>
-            <p>This is a select list of the best famous William Shakespeare poetry</p>
+            <a href="index.php"><h1 id="titlePage">Astroclub</h1></a>
+            <p>News about astronomy, space mission and science.</p>
         </header>
         <div id="content">
             <?php echo $content; ?> <!-- Content of the webpage -->
