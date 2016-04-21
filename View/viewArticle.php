@@ -1,16 +1,16 @@
-<?php $this->title = "William Shakespeare - " . $poem['title']; ?>
+<?php $this->title = "William Shakespeare - " . $article['title']; ?>
 
 <article>
     <header>
-        <h1 class="titlePoem"><?php echo $poem['title']; ?></h1>
+        <h1 class="titleArticle"><?php echo $article['title']; ?></h1>
     </header>
-    <p> <?php echo $poem['content'] ?> </p>
+    <p> <?php echo $article['content'] ?> </p>
 </article>
 <hr>
 
 <header>
     <h2 id="titleAnswers">
-        Comments to <?php echo $poem['title']; ?>
+        Comments to <?php echo $article['title']; ?>
     </h2>
 </header>
 
@@ -26,7 +26,7 @@
     <textarea name="txt-comment" id="txt-comment" cols="30" rows="4"
               placeholder="Your Comment" required ></textarea>
     <br>
-    <input type="hidden" name="id" value="<?php echo $poem['id']; ?>" 
+    <input type="hidden" name="id" value="<?php echo $article['id']; ?>" 
            value="Comment"/>
     <input type="submit" value="Comment"/>
 </form>
