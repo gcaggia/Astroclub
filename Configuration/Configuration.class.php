@@ -29,7 +29,7 @@ class Configuration {
             }
             
             if(!file_exists($pathFile)) {
-                throw new Exception "Config file not found";
+                throw new Exception("Config file not found");
             } else {
                 self::$parameters = parse_ini_file($pathFile);
             }
