@@ -1,75 +1,80 @@
 <?php
 
-require_once "Controller/ControllerIndex.php";
-require_once "Controller/ControllerArticle.php";
+require_once "Controller/Router.class.php";
 require_once "View/View.class.php";
 
 class Router {
     
-    private $ctrlIndex;
-    private $ctrlArticle;
-    
-    public function __construct() {
-        $this->ctrlIndex = new ControllerIndex();
-        $this->ctrlArticle  = new ControllerArticle();
-    }
     
     // Handle an incoming request
     public function queryRouter() {
         
         try {
-    
-            if(!isset($_GET['action'])) {
-                $this->ctrlIndex->index();
-                return;
-            } 
             
-            $action = $_GET['action'];
-                
-            if ($action != 'article' && $action != "comment") {
-              throw new Exception("Invalid action.!");
-            }
+            $request = new Request($_REQUEST);
             
-            //Specific article display
-            if ($action == 'article') {
-                
-                $idArticle = intval($this->getParam($_GET, 'id'));
+            $controller = $this->createController($request);
+            $action = $this->createAction($request);
             
-                if ($idArticle === 0) {
-                    throw new Exception("Article ID not correct...");
-                }
-            
-                // We call the controller
-                $this->ctrlArticle->article($idArticle);
-                
-            } else {
-                
-                $author    = $this->getParam($_POST, 'author');
-                $content   = $this->getParam($_POST, 'txt-comment');
-                $idArticle = $this->getParam($_POST, 'id');
-                
-                $this->ctrlArticle->comment($author, $content, $idArticle);
-            }
+            $controller->executeAction($action);
 
         } catch (Exception $e) {
-            $this->error($e->getMessage());
+            $this->handleError($e);
         }
         
     }
     
-    // Look for a param in an array
-    private function getParam($array, $name) {
-        if (isset($array[$name])) {
-            return $array[$name];  
-        } else {
-            throw new Exception("Undefined '$name' parameter");
+    // Create the good controller from an incoming request
+    private function createController(Request $request) {
+        
+        $strController = "Index";  // Default Controller
+        
+        if($request->ParamExist('controller')) {
+            $strController = $request->getParam('controller');
+            
+            // The first letter must be capitalized
+            $strController = ucfirst(strtolower($strController));
         }
+        
+        // Name of the class of the controller
+        $controllerClass = "Controller" . $strController;
+        
+        $controllerFile = "Controller/"  . $controllerClass . ".php";
+        
+        if(file_exists($controllerFile)) {
+            
+            // We include the good controller file in order to instance it after
+            require $controllerFile;
+            $controller = new $controllerClass();
+            
+            $controller->setRequest($request);
+            return $controller;
+            
+        } else {
+            throw new Exception("File '$controllerFile' not found");;
+        }
+        
+        
     }
     
-    // Display an error
-    private function error($errorMessage) {
+    // Determine action to execute from incoming request
+    private function createAction(Request $request) {
+        
+        $action = "index";  // Default action
+        
+        if($request->ParamExist('action')) {
+            $action = $request->getParam('action');
+        }
+        
+        return $action;
+        
+    }
+    
+    
+    // Handle an execution error (exception)
+    private function error(Exception $exception) {
         $view = new View("Error");
-        $view->generate(array("errorMessage" => $errorMessage));
+        $view->generate(array("errorMessage" => $exception->getMessage() ));
     }
     
 }
