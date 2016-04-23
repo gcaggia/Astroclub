@@ -7,9 +7,16 @@ class View {
     // Title of the view (defined inside the view file)
     private $title;
     
-    public function __construct($action) {
-        // We determine the name of the file from the action
-        $this->file = "View/view" . $action . ".php";
+    public function __construct($action, $controller = "") {
+        
+        // Setting of the file name from action and constructor
+        $file = "View/";
+        
+        if($controller != "") {
+            $file = $file . $controller . "/";
+        }
+        
+        $this->file = $file . $action . ".php";
     }
     
     // Generate and display a view
