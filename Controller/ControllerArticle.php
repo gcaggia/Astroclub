@@ -2,7 +2,7 @@
 
 require_once "Model/Article.class.php";
 require_once "Model/Comment.class.php";
-require_once "View/View.class.php";
+require_once "Framework/View.class.php";
 
 class ControllerArticle {
     

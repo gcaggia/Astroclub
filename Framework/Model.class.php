@@ -1,6 +1,6 @@
 <?php
 
-require "Configuration/Configuration.class.php";
+require "Framework/Configuration.class.php";
 
 /**
  * 

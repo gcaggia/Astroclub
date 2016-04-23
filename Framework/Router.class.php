@@ -1,7 +1,7 @@
 <?php
 
-require_once "Controller/Router.class.php";
-require_once "View/View.class.php";
+require_once "Framework/Router.class.php";
+require_once "Framework/View.class.php";
 
 class Router {
     

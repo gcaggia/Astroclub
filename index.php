@@ -1,6 +1,6 @@
 <?php 
 
-require "Controller/Router.class.php";
+require "Framework/Router.class.php";
 
 $router = new Router();
 $router->queryRouter();
