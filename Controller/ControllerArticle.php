@@ -17,7 +17,10 @@ class ControllerArticle extends Controller {
     }
     
     // Display details about a specific article
-    public function article($idArticle) {
+    public function index() {
+        
+        $idArticle = $this->request->getParam("id");
+        
         $article  = $this->article->getanArticle($idArticle);
         $comments = $this->comment->getComments($idArticle);
         $view = new View("Article");
