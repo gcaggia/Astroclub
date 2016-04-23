@@ -1,10 +1,11 @@
 <?php
 
-require_once "Model/Article.class.php";
-require_once "Model/Comment.class.php";
+require_once "Framework/Controller.class.php";
 require_once "Framework/View.class.php";
+require_once "Model/Comment.class.php";
+require_once "Model/Article.class.php";
 
-class ControllerArticle {
+class ControllerArticle extends Controller {
     
     // This attributs represents model objects
     private $article;

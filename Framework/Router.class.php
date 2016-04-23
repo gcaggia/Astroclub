@@ -1,6 +1,6 @@
 <?php
 
-require_once "Framework/Router.class.php";
+require_once "Framework/Request.class.php";
 require_once "Framework/View.class.php";
 
 class Router {
