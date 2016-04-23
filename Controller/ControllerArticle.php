@@ -29,13 +29,17 @@ class ControllerArticle extends Controller {
     }
     
     // Add a comment to a article
-    public function comment($author, $content, $idArticle) {
+    public function comment() {
+        
+        $author    = $this->request->getParam("author");
+        $content   = $this->request->getParam("txt-comment");
+        $idArticle = $this->request->getParam("id");
         
         // Save the comment
         $this->comment->addComment($author, $content, $idArticle);
         
         // Update of display
-        $this->article($idArticle);
+        $this->executeAction("index");
         
     }
     
