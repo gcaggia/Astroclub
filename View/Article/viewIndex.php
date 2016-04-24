@@ -19,7 +19,7 @@
     <p><?php echo $comment['content']; ?></p>
 <?php endforeach; ?>
 
-<form method="post" action="index.php?action=comment">
+<form method="post" action="index.php?controller=article&action=comment">
     <input id="author" name="author" type="text" 
            placeholder="Your pseudo" required /> 
     <br>

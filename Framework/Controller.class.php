@@ -41,7 +41,7 @@ abstract class Controller {
         $controllerName  = str_replace("Controller", "", $controllerClass);
         
         // Instanciation and generation of the view
-        $view = new View($this->action, $controller);
+        $view = new View($this->action, $controllerName);
         $view->generate($viewData);
         
     }

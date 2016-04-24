@@ -16,7 +16,7 @@ class View {
             $file = $file . $controller . "/";
         }
         
-        $this->file = $file . $action . ".php";
+        $this->file = $file . "view" . $action . ".php";
     }
     
     // Generate and display a view

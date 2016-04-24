@@ -39,7 +39,7 @@ class Router {
         // Name of the class of the controller
         $controllerClass = "Controller" . $strController;
         
-        $controllerFile = "Controller/"  . $controllerClass . ".php";
+        $controllerFile = "Controller/"  . $controllerClass . ".class.php";
         
         if(file_exists($controllerFile)) {
             
@@ -60,7 +60,7 @@ class Router {
     // Determine action to execute from incoming request
     private function createAction(Request $request) {
         
-        $action = "index";  // Default action
+        $action = "Index";  // Default action
         
         if($request->ParamExist('action')) {
             $action = $request->getParam('action');
@@ -72,7 +72,7 @@ class Router {
     
     
     // Handle an execution error (exception)
-    private function error(Exception $exception) {
+    private function handleError(Exception $exception) {
         $view = new View("Error");
         $view->generate(array("errorMessage" => $exception->getMessage() ));
     }
