@@ -22,18 +22,33 @@ class Configuration {
         
         if (self::$parameters == null) {
             
-            $pathFile = "Configuration/prod.ini";
+            $pathFile = getenv("CLEARDB_DATABASE_URL");
             
-            if(!file_exists($pathFile)) {
+            // We are in Dev in local
+            if($pathFile == "") {
+                
                 $pathFile = "Configuration/dev.ini";
-            }
-            
-            if(!file_exists($pathFile)) {
-                throw new Exception("Config file not found");
+                
+                if(!file_exists($pathFile)) {
+                    throw new Exception("Config Dev file not found");
+                } else {
+                    self::$parameters = parse_ini_file($pathFile);
+                }
+                
+            // We are in prod on Heroku
             } else {
-                self::$parameters = parse_ini_file($pathFile);
+                
+                $url = parse_url($pathFile);
+                
+                self::$parameters = array(
+                    "hostname" => $url["host"],
+                    "username" => $url["user"],
+                    "password" => $url["pass"],
+                    "database" => substr($url["path"], 1)
+                );
+
             }
-            
+
         } 
         
         return self::$parameters;

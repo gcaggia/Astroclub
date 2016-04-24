@@ -35,12 +35,14 @@ abstract class Model {
         if(self::$db == null) {
             
             // Retrieval configuration parameters about the DB
-            $dsn   = Configuration::get("dsn");
-            $login = Configuration::get("login");
-            $pass  = Configuration::get("pass");
+            $hostname = Configuration::get("hostname");
+            $database = Configuration::get("database");
+            $username = Configuration::get("username");   
+            $password = Configuration::get("password"); 
             
-            self::$db = new PDO($dsn, $login, $pass, 
-                                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            self::$db =  new PDO("mysql:host=$hostname;dbname=$database", 
+                                 $username, $password, 
+                                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
 
         return self::$db;
