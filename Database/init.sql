@@ -46,7 +46,9 @@ INSERT INTO T_ARTICLE(ARTICLE_TITLE, ARTICLE_DATE,
                  "the Hubble Space Telescope.  (source : national geographic)"));
 
 
+SELECT ARTICLE_ID into @VAR_ID FROM T_ARTICLE WHERE ARTICLE_TITLE = 'Curiosity';
+
 INSERT INTO T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, ARTICLE_ID) VALUES
-(NOW(), 'Eric', 'I hope the mission will succeed !!', 1);
+(NOW(), 'Eric', 'I hope the mission will succeed !!', @VAR_ID);
 INSERT INTO T_COMMENT(COM_DATE, COM_AUTHOR, COM_CONTENT, ARTICLE_ID) VALUES
-(NOW(), 'Me', 'I hope too !', 1);
+(NOW(), 'Me', 'I hope too !', @VAR_ID);
