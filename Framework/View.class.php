@@ -25,10 +25,15 @@ class View {
         // Generate the specific part of the view
         $content = $this->generateFile($this->file, $data);
         
+        // Because of url rewriting we need a variable to define 
+        // the path root  of the website
+        $webRoot = Configuration::get("webRoot", "/");
+        
         // Generate the commum template using the specific part
         $view = $this->generateFile("View/template.php", 
-                                    array("title" => $this->title, 
-                                          "content" => $content));
+                                    array("title"   => $this->title, 
+                                          "content" => $content, 
+                                          "webRoot" => $webRoot));
         
         // Return the view to the browser
         echo $view;
