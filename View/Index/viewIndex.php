@@ -6,9 +6,9 @@
         <header>
             <a href="<?php echo './article/' . 
                            $this->cleanValue($article['id']); ?>">
-                <h1 class="titleArticle">
+                <h2 class="titleArticle">
                     <?php echo $this->cleanValue($article['title']); ?>
-                </h1>
+                </h2>
             </a>
         </header>
         <p> <?php echo $this->cleanValue($article['content']); ?> </p>
