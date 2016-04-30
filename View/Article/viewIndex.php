@@ -2,21 +2,23 @@
 
 <article>
     <header>
-        <h1 class="titleArticle"><?php echo $article['title']; ?></h1>
+        <h1 class="titleArticle">
+            <?php echo $this->cleanValue($article['title']); ?>
+        </h1>
     </header>
-    <p> <?php echo $article['content'] ?> </p>
+    <p> <?php echo $this->cleanValue($article['content']) ?> </p>
 </article>
 <hr>
 
 <header>
     <h2 id="titleAnswers">
-        Comments to <?php echo $article['title']; ?>
+        Comments to <?php echo $this->cleanValue($article['title']); ?>
     </h2>
 </header>
 
 <?php foreach($comments as $comment): ?>
-    <p><?php echo $comment['author']; ?></p>
-    <p><?php echo $comment['content']; ?></p>
+    <p><?php echo $this->cleanValue($comment['author']); ?></p>
+    <p><?php echo $this->cleanValue($comment['content']); ?></p>
 <?php endforeach; ?>
 
 <form method="post" action="./article/comment">
@@ -26,7 +28,7 @@
     <textarea name="txt-comment" id="txt-comment" cols="30" rows="4"
               placeholder="Your Comment" required ></textarea>
     <br>
-    <input type="hidden" name="id" value="<?php echo $article['id']; ?>" 
-           value="Comment"/>
+    <input type="hidden" name="id" value="Comment"
+           value="<?php echo $this->cleanValue($article['id']); ?>" />
     <input type="submit" value="Comment"/>
 </form>

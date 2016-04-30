@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <base href="<?php echo $webRoot; ?>" >
-    <link rel="stylesheet" href="style.css" />
-    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="content/style.css" />
+    <title><?php echo $this->cleanValue($title); ?></title>
 </head>
 
 <body>
@@ -15,7 +15,8 @@
             <p>News about astronomy, space mission and science.</p>
         </header>
         <div id="content">
-            <?php echo $content; ?> <!-- Content of the webpage -->
+            <!-- Content of the webpage -->
+            <?php echo $content; ?> 
         </div>
         <!-- #content -->
         <footer id="footerPage">

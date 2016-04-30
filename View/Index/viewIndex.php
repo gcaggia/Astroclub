@@ -5,11 +5,13 @@
     <article>
         <header>
             <a href="<?php echo './article/' . 
-                                 $article['id']; ?>">
-                <h1 class="titleArticle"><?php echo $article['title']; ?></h1>
+                           $this->cleanValue($article['id']); ?>">
+                <h1 class="titleArticle">
+                    <?php echo $this->cleanValue($article['title']); ?>
+                </h1>
             </a>
         </header>
-        <p> <?php echo $article['content']; ?> </p>
+        <p> <?php echo $this->cleanValue($article['content']); ?> </p>
     </article>
     <hr>
 <?php endforeach; ?>
