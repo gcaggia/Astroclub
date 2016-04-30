@@ -19,6 +19,12 @@ class View {
         $this->file = $file . "view" . $action . ".php";
     }
     
+    // Clean a value inserted in a html page
+    // Prevention against SQL injection and XSS 
+    private function cleanValue($value) {
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false);
+    }
+    
     // Generate and display a view
     public function generate($data) {
         
