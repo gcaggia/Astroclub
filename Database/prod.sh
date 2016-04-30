@@ -2,13 +2,12 @@
 
 echo "******** Init database for Production "
 echo "*** Get Database Environment "
-#DB_URL=$CLEARDB_DATABASE_URL
+# DB_URL=$CLEARDB_DATABASE_URL
 
 # DB_URL => mysql://[username]:[password]@[host]/[database name]?reconnect=true
 DB_URL=$(heroku config | grep CLEARDB_DATABASE_URL | awk '{print $2}')
 echo $DB_URL
 
-# [A-Za-z0-9._%+-]
 re="mysql://([^:]+):([^:@]+)@([^/:@]+)/([^/:@?]+)\?reconnect=true"
 
 if [[ $DB_URL =~ $re ]];
@@ -27,6 +26,5 @@ else
     echo "*** WARNING : Environment KO"
 fi
 
-
-# mysql -u$USERNAME -h$HOST -p$PASSWORD $DATABASE
 mysql -u$USERNAME -h$HOST -p$PASSWORD $DATABASE < ./init.sql
+echo "*** Job Done. "
