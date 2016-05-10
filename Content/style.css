@@ -1,36 +1,18 @@
-html, body {
-    height: 100%;
-}
 
-body {
-    color: #bfbfbf;
-    background: black;
-    font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
-}
-
-h1 {
-    color: white;
-}
-
-#titlePoem {
-    font-size : 100%;
+h1, h2 {
+    color: #2A2730;
 }
 
 .titleBillet {
     margin-bottom : 0px;
 }
 
-header a {
+a, a:hover {
     text-decoration: none;
 }
 
 #global {
-    min-height: 100%;  
-    background: #333534;
-    width: 70%;
-    margin: auto;    /* Tip to center the div */
     text-align: justify;
-    padding: 5px 20px;
 }
 
 #contenu {
@@ -43,4 +25,13 @@ header a {
 
 #txtComment {
     width: 50%;
+}
+
+
+#footerPage {
+    background-color: #2A2730;
+    color: white;
+    line-height: 150px;
+    min-height: 200px;
+    margin-bottom: 0px !important;
 }

@@ -7,7 +7,7 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
         type="text/css" />
-    <link rel="stylesheet" href="content/style.css" />
+    <link rel="stylesheet" href="Content/style.css" />
     <title><?php echo $this->cleanValue($title); ?></title>
 </head>
 
@@ -26,9 +26,14 @@
             </div> 
         </div>
         <!-- #content -->
-        <footer id="footerPage">
+        <footer  class="navbar" id="footerPage">
             <div class="container">
-                <p>Website performed with PHP, HTML5 and CSS.</p>
+                <div class="pull-left">
+                    <p><a href="#">Guillaume</a></p>
+                </div>
+                <div class="pull-right">
+                    <p>Website performed with PHP, HTML5 and CSS.</p>
+                </div>
             </div>
         </footer>
     </div>
